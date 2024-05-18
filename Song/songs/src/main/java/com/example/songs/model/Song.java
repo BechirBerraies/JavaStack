@@ -13,8 +13,6 @@ public class Song {
 
     private String title;
     private String artist;
-    private String album;
-    private int year;
 
     // Getters and Setters
     public Long getId() {
@@ -39,21 +37,5 @@ public class Song {
 
     public void setArtist(String artist) {
         this.artist = artist;
-    }
-
-    public String getAlbum() {
-        return album;
-    }
-
-    public void setAlbum(String album) {
-        this.album = album;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
     }
 }
