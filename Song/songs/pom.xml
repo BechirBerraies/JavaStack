@@ -36,6 +36,13 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
+<!-- Spring JSP -->
+<dependency>
+    <groupId>org.apache.tomcat.embed</groupId>
+    <artifactId>tomcat-embed-jasper</artifactId>
+    <scope>provided</scope>
+</dependency>
+
         <!-- Spring Boot Starter Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -57,6 +64,7 @@
             <version>8.0.33</version>
             <scope>runtime</scope>
         </dependency>
+        
 
         <!-- Spring Boot Starter Test (for testing) -->
         <dependency>
@@ -64,6 +72,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
