@@ -1,7 +1,6 @@
 package com.example.songs.services;
 
 import java.util.List;
-
 import com.example.songs.models.Song;
 import com.example.songs.repositories.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +15,9 @@ public class SongService {
 
     public List<Song> getAllSongs() {
         return songRepository.findAll();
+    }
+    public Song createSong(Song s) {
+        return songRepository.save(s);
     }
 
     public Song getSongById(Long id) {

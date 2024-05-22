@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 
@@ -19,8 +20,8 @@ public class SongController {
     private SongService songService;
 
 	@GetMapping("/")
-	public String SecondPage(Model model) {
-		return "MySecondPage";
+	public String createSong(Model model) {
+		return "CreateSong";
 	}
 
     @GetMapping("/song/add")
@@ -28,9 +29,15 @@ public class SongController {
         return "index";
     }
     @PostMapping("/song/add")
-    public Song createSong(@RequestBody Song song) {
-
-        return songService.saveOrUpdateSong(song);
+    public String create(@RequestBody @ModelAttribute("song") Song song , BindingResult result, Model model) {
+        if (result.hasErrors()){
+            System.out.println(result);
+            return "index";
+        }
+        else{
+            songService.createSong(song);
+            return "redirect:/";
+        }
     }
     
     @GetMapping("/{id}")
