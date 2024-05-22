@@ -1,20 +1,31 @@
-package com.example.songs.Controller;
+package com.example.songs.Controllers;
 
-import com.example.songs.model.Song;
-import com.example.songs.service.SongService;
+import com.example.songs.models.Song;
+import com.example.songs.services.SongService;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+
+
+
+
 
 @Controller
 public class SongController {
     @Autowired
     private SongService songService;
 
+	@GetMapping("/")
+	public String SecondPage(Model model) {
+		return "MySecondPage";
+	}
+
     @GetMapping("/song/add")
     public String home(Model model) {
-        return "index"; // This will return the view named "index"
+        return "index";
     }
     @PostMapping("/song/add")
     public Song createSong(@RequestBody Song song) {

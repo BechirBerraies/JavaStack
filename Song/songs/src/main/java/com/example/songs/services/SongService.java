@@ -1,12 +1,13 @@
-package com.example.songs.service;
+package com.example.songs.services;
 
-import com.example.songs.model.Song;
-import com.example.songs.repository.SongRepository;
+import java.util.List;
+
+import com.example.songs.models.Song;
+import com.example.songs.repositories.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.util.List;
 
 @Service
 public class SongService {
