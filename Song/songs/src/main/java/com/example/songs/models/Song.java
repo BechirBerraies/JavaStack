@@ -3,6 +3,8 @@ package com.example.songs.models;
 
 
 
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -44,4 +46,5 @@ public class Song {
     public void setArtist(String artist) {
         this.artist = artist;
     }
+
 }

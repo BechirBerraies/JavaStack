@@ -9,6 +9,16 @@
             "projectName": "songs",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SongsApplication<SaveTravels>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.songs.SongsApplication",
+            "projectName": "SaveTravels",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
