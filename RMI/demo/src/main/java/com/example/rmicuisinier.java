@@ -1,67 +1,42 @@
 package com.example;
 
-import java.rmi.Naming;
-import java.rmi.RemoteException;
+
 import java.net.MalformedURLException;
+import java.rmi.Naming;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.Scanner;
 
 public class rmicuisinier {
-
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MalformedURLException, RemoteException, NotBoundException {
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Sélectionner le numéro de l’ingrédient, puis appuyez sur « Entrée » :");
+        System.out.println("Sélectionner le numéro de l’ingrédient, puis cliquez sur « Entrée » :");
         System.out.println("[1] cornichons");
         System.out.println("[2] safran");
         System.out.println("[3] sel");
         System.out.println("[4] poivre");
 
-        int choix = scan.nextInt();
-        String ingredient = "";
-
-        switch (choix) {
-            case 1:
-                ingredient = "cornichons";
-                break;
-            case 2:
-                ingredient = "safran";
-                break;
-            case 3:
-                ingredient = "sel";
-                break;
-            case 4:
-                ingredient = "poivre";
-                break;
-            default:
-                System.out.println("Choix invalide.");
-                return;
+        String[] ingredients = {"cornichons", "safran", "sel", "poivre"};
+        int choice = scan.nextInt();
+        if (choice < 1 || choice > 4) {
+            System.out.println("Choix invalide");
+            scan.close();
+            return;
         }
 
-        float minPrice = Float.MAX_VALUE;
-        String minStore = "";
+        String ingredient = ingredients[choice - 1];
+        Store obj = (Store) Naming.lookup("rmi://localhost:1099/StoreManager");
 
-        for (int i = 1; i <= 3; i++) {
-            String storeName = "rmi://localhost:1099/Mag" + i;
-			System.out.println("loop check "+ i);
-			System.out.println(minPrice);
-			System.out.println(storeName);
-            try {
-                Store obj = (Store) Naming.lookup(storeName);
-                float price = obj.getPrice(ingredient);
+        float priceMag1 = obj.getPrice(ingredient, "Mag1");
+        float priceMag2 = obj.getPrice(ingredient, "Mag2");
+        float priceMag3 = obj.getPrice(ingredient, "Mag3");
 
-				System.out.println(price);
-                if (price < minPrice) {
-                    minPrice = price;
-                    minStore = "Mag" + i;
-                }
-            } catch (NotBoundException | MalformedURLException | RemoteException e) {
-                // Le magasin n'est pas lié au registre, ignorer et passer au suivant
-                continue;
-            }
-        }
+        float minPrice = Math.min(priceMag1, Math.min(priceMag2, priceMag3));
+        String cheapestStore = (minPrice == priceMag1) ? "Mag1" : (minPrice == priceMag2) ? "Mag2" : "Mag3";
 
-        System.out.println("Le magasin " + minStore + " propose " + ingredient + " au prix de " + minPrice);
+        System.out.println("Le prix le plus bas pour " + ingredient + " est " + minPrice + " à " + cheapestStore);
+
+        scan.close();
     }
 }
