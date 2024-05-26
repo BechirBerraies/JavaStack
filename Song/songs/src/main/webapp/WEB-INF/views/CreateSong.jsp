@@ -52,8 +52,8 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row justify-content-center">
+    <div class="container ">
+        <div class="row justify-content-center ">
             <div class="col-md-8">
                 <div class="song-form">
                     <h2>Create a Song</h2>
@@ -70,7 +70,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 mt-5">
                 <h2>List of Songs</h2>
                 <table class="table">
                     <thead>
@@ -85,14 +85,18 @@
                                 <td>${song.title}</td>
                                 <td>${song.artist}</td>
                                 <td>${song.id}</td>
-                                <td><a href="song/${song.id}/edit">edit song</a></td>
+                                <td><a type="button" class="btn btn-warning" href="song/${song.id}">View</a></td>
                                 <td>
-                                    <form action="/song/${song.id}/delete" method="post">
-                                        <input type="hidden" name="_method" value="DELETE"> 
-                                        <input type="submit" value="Delete" />
+                                        <a type="button" class="btn btn-primary" href="song/${song.id}/edit" >edit song</a>
+                                    
+                                </td>
+                                <td>
+                                    <form action="/song/${song.id}/delete" method="post" class="d-inline">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="submit" value="Delete" class="btn btn-danger" />
                                     </form>
                                 </td>
-                                <td><a href="song/${song.id}">View</a></td>
+                                
                             </tr>
                         </c:forEach>
                     </tbody>
