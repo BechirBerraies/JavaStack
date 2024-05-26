@@ -1,13 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!-- c:out ; c:forEach etc. -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- Formatting (dates) -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!-- form:form -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!-- for rendering errors on PUT routes -->
-<%@ page isErrorPage="true"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +9,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Song</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -53,14 +46,13 @@
                 <div class="song-form">
                     <h2>Edit Song</h2>
                     <form action="/song/${song.id}/edit" method="post" modelAttribute="song">
-                        <input type="hidden" name="_method" value="put">
                         <div class="mb-3">
                             <label for="title" class="form-label">Title:</label>
-                            <input path="title" id="title" class="form-control" placeholder="Enter song title" title="Enter the title of the song" required="true"/>
+                            <input type="text" id="title" name="title" class="form-control" placeholder="Enter song title" title="Enter the title of the song" required="true"/>
                         </div>
                         <div class="mb-3">
                             <label for="artist" class="form-label">Artist:</label>
-                            <input path="artist" id="artist" class="form-control" placeholder="Enter artist name" title="Enter the name of the artist" required="true"/>
+                            <input type="text" id="artist" name="artist" class="form-control" placeholder="Enter artist name" title="Enter the name of the artist" required="true"/>
                         </div>
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </form>
@@ -68,7 +60,6 @@
             </div>
         </div>
     </div>
-    <!-- Bootstrap JS (optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

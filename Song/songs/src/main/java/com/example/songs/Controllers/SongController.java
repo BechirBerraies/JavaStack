@@ -59,16 +59,15 @@ public class SongController {
 
 
 
-    @PutMapping("song/{id}/edit")
-    public String updateSong(@PathVariable Long id, @RequestBody Song song , BindingResult result)  {
-
-        if(result.hasErrors() ){
+    @PostMapping("song/{id}/edit")
+    public String updateSong(@PathVariable Long id, @ModelAttribute Song song, BindingResult result) {
+        if (result.hasErrors()) {
+            System.out.println("Validation errors occurred:");
+            result.getAllErrors().forEach(error -> System.out.println(error.getDefaultMessage()));
             return "Edit";
-        }else {
-                
+        } else {
             songService.updateSong(song);
             return "redirect:/";
-
         }
     }
 

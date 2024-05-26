@@ -1,0 +1,8 @@
+cornichons
+10.0
+safran
+2000.0
+sel
+1.0
+poivre
+100.0
