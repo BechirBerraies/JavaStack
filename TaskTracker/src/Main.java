@@ -19,7 +19,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String y = sc.nextLine();
 
-        System.out.println(y);
+//        System.out.println(y);
 
         ControllerTask.AddTask(y);
 
